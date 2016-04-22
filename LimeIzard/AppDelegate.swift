@@ -18,22 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        beaconManager = KTKBeaconManager(delegate: self)
-        beaconManager.requestLocationAlwaysAuthorization()
-        
-        // Region
-        let proximityUUID = NSUUID(UUIDString: "11f10af9-8ec0-4e88-bc27-3fb17effe8bf")
-        let region = KTKBeaconRegion(proximityUUID: proximityUUID!, identifier: "region-identifier")
-        
-        // Region Properties
-        region.notifyEntryStateOnDisplay = true
-        
-        //beaconManager.stopMonitoringForAllRegions()
-        
-        // Start Ranging
-        beaconManager.startRangingBeaconsInRegion(region)
-        beaconManager.startMonitoringForRegion(region)
-        beaconManager.requestStateForRegion(region)
+//        beaconManager = KTKBeaconManager(delegate: self)
+//        beaconManager.requestLocationAlwaysAuthorization()
+//        
+//        // Region
+//        let proximityUUID = NSUUID(UUIDString: "11f10af9-8ec0-4e88-bc27-3fb17effe8bf")
+//        let region = KTKBeaconRegion(proximityUUID: proximityUUID!, identifier: "region-identifier")
+//        
+//        // Region Properties
+//        region.notifyEntryStateOnDisplay = true
+//        
+//        //beaconManager.stopMonitoringForAllRegions()
+//        
+//        // Start Ranging
+//        beaconManager.startRangingBeaconsInRegion(region)
+//        beaconManager.startMonitoringForRegion(region)
+//        beaconManager.requestStateForRegion(region)
         
         return true
     }

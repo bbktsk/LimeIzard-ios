@@ -17,21 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lime Izard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRf-jq-zYv">
-                                <rect key="frame" x="210" y="280" width="180" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZXM-3E-Ce2">
+                                <rect key="frame" x="236" y="216" width="128" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="U1q-Gh-DtV"/>
-                                    <constraint firstAttribute="height" constant="40" id="kPd-jq-uEm"/>
+                                    <constraint firstAttribute="width" constant="128" id="D04-xD-K2X"/>
+                                    <constraint firstAttribute="height" constant="128" id="aQm-UP-vhN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="fRf-jq-zYv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="81S-aZ-Hd4"/>
-                            <constraint firstItem="fRf-jq-zYv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mDZ-mO-pp5"/>
+                            <constraint firstItem="ZXM-3E-Ce2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dVN-bf-Lcq"/>
+                            <constraint firstItem="ZXM-3E-Ce2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="qvU-xs-AK2"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="512" height="512"/>
+    </resources>
 </document>

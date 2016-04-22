@@ -21,6 +21,12 @@ class NearbyViewCell: UITableViewCell {
         // Initialization code
         
         userImage.image = UIImage(named: "first")
+        
+        heyButton.layer.cornerRadius = 3
+        heyButton.layer.borderWidth = 1
+        heyButton.layer.borderColor = UIColor(hex: 0x3fd40d).CGColor
+        heyButton.tintColor = UIColor(hex: 0x3fd40d)
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
