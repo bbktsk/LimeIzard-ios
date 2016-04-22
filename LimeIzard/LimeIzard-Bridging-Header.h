@@ -10,5 +10,6 @@
 #define LimeIzard_Bridging_Header_h
 
 #import <KontaktSDK/KontaktSDK.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #endif /* LimeIzard_Bridging_Header_h */

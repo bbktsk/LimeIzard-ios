@@ -37,7 +37,7 @@ class WebAPI {
     
     enum Router : URLRequestConvertible {
         
-        static let baseURL = "url"
+        static let baseURL = "https://lime-izard.herokuapp.com/api/"
         
         case UserInfo(userID: String)
         case UserUpdate(userID: String)
@@ -58,11 +58,11 @@ class WebAPI {
         var path : String {
             switch self {
             case .UserInfo(let userID):
-                return Router.baseURL+"users/\(userID)"
+                return "users/\(userID)"
             case .UserUpdate(let userID):
-                return Router.baseURL+"users/\(userID)"
+                return "users/\(userID)"
             case .UserVisitBeacon(let userID):
-                return Router.baseURL+"users/\(userID)/visit"
+                return "users/\(userID)/visit"
             }
         }
         
@@ -87,8 +87,22 @@ class WebAPI {
         
     }
     
-    class func getUserInfo(userID: String, onComplete: (Int?, JSON?, NSError?) -> Void) {
-        
+    func getUserInfo(userID: String, onComplete: (Int?, JSON?, NSError?) -> Void) {
+        Alamofire.request(Router.UserInfo(userID: userID))
+            .responseJSON { response in
+                print("---------------------------")
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                }
+        }
     }
+    
+    
+    
     
 }

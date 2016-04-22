@@ -11,6 +11,7 @@
 		6A92C2F91CCA99A200E1F922 /* NearbyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2F81CCA99A200E1F922 /* NearbyViewCell.swift */; };
 		6A92C2FC1CCAA50400E1F922 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */; };
 		6A92C3001CCAC94800E1F922 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2FF1CCAC94800E1F922 /* Services.swift */; };
+		6A92C3021CCAD7C300E1F922 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C3011CCAD7C300E1F922 /* LoginViewController.swift */; };
 		B0F0FFF8D874D32AF1548DE7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE960E1D2FEFAEA6CED6430 /* Pods.framework */; };
 		B35F553F1CCA7C600050EFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F553E1CCA7C600050EFFA /* AppDelegate.swift */; };
 		B35F55411CCA7C600050EFFA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F55401CCA7C600050EFFA /* ProfileViewController.swift */; };
@@ -28,6 +29,7 @@
 		6A92C2FA1CCA9D8A00E1F922 /* LimeIzard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LimeIzard-Bridging-Header.h"; sourceTree = "<group>"; };
 		6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6A92C2FF1CCAC94800E1F922 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		6A92C3011CCAD7C300E1F922 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8CE960E1D2FEFAEA6CED6430 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E19C620DBF123224852007 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B35F553B1CCA7C600050EFFA /* LimeIzard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimeIzard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				B35F55401CCA7C600050EFFA /* ProfileViewController.swift */,
 				6A92C2F81CCA99A200E1F922 /* NearbyViewCell.swift */,
 				6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */,
+				6A92C3011CCAD7C300E1F922 /* LoginViewController.swift */,
 				6A92C2FF1CCAC94800E1F922 /* Services.swift */,
 				B35F55441CCA7C600050EFFA /* Main.storyboard */,
 				6A92C2FA1CCA9D8A00E1F922 /* LimeIzard-Bridging-Header.h */,
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A92C3021CCAD7C300E1F922 /* LoginViewController.swift in Sources */,
 				B35F55431CCA7C600050EFFA /* MapViewController.swift in Sources */,
 				6A92C2F91CCA99A200E1F922 /* NearbyViewCell.swift in Sources */,
 				6A92C2F71CCA98FF00E1F922 /* NearbyViewController.swift in Sources */,
@@ -358,7 +362,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LimeIzard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LimeIzard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bubble.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -373,7 +377,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LimeIzard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LimeIzard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bubble.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
