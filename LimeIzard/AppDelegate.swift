@@ -59,7 +59,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        let forFb =  FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        if forFb {
+            let nc = NSNotificationCenter.defaultCenter()
+            nc.postNotificationName("UserLoggedInFB", object: nil)
+            return true
+        }
+        else {
+            return false
+        }
     }
 }
 
