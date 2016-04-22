@@ -10,6 +10,7 @@
 		6A92C2F71CCA98FF00E1F922 /* NearbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2F61CCA98FF00E1F922 /* NearbyViewController.swift */; };
 		6A92C2F91CCA99A200E1F922 /* NearbyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2F81CCA99A200E1F922 /* NearbyViewCell.swift */; };
 		6A92C2FC1CCAA50400E1F922 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */; };
+		6A92C3001CCAC94800E1F922 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2FF1CCAC94800E1F922 /* Services.swift */; };
 		B0F0FFF8D874D32AF1548DE7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE960E1D2FEFAEA6CED6430 /* Pods.framework */; };
 		B35F553F1CCA7C600050EFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F553E1CCA7C600050EFFA /* AppDelegate.swift */; };
 		B35F55411CCA7C600050EFFA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F55401CCA7C600050EFFA /* ProfileViewController.swift */; };
@@ -17,8 +18,6 @@
 		B35F55461CCA7C600050EFFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B35F55441CCA7C600050EFFA /* Main.storyboard */; };
 		B35F55481CCA7C600050EFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35F55471CCA7C600050EFFA /* Assets.xcassets */; };
 		B35F554B1CCA7C600050EFFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B35F55491CCA7C600050EFFA /* LaunchScreen.storyboard */; };
-		B35F55531CCA912C0050EFFA /* StatusBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35F55521CCA912C0050EFFA /* StatusBar.xib */; };
-		B35F55551CCAA38F0050EFFA /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F55541CCAA38F0050EFFA /* StatusBar.swift */; };
 		B399B0901CCAA67B00090CB9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B399B08F1CCAA67B00090CB9 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +27,7 @@
 		6A92C2F81CCA99A200E1F922 /* NearbyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyViewCell.swift; sourceTree = "<group>"; };
 		6A92C2FA1CCA9D8A00E1F922 /* LimeIzard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LimeIzard-Bridging-Header.h"; sourceTree = "<group>"; };
 		6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		6A92C2FF1CCAC94800E1F922 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		8CE960E1D2FEFAEA6CED6430 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E19C620DBF123224852007 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B35F553B1CCA7C600050EFFA /* LimeIzard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimeIzard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,8 +38,6 @@
 		B35F55471CCA7C600050EFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B35F554A1CCA7C600050EFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B35F554C1CCA7C600050EFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B35F55521CCA912C0050EFFA /* StatusBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBar.xib; sourceTree = "<group>"; };
-		B35F55541CCAA38F0050EFFA /* StatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		B399B08F1CCAA67B00090CB9 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,10 +96,9 @@
 				B35F55421CCA7C600050EFFA /* MapViewController.swift */,
 				B35F55401CCA7C600050EFFA /* ProfileViewController.swift */,
 				6A92C2F81CCA99A200E1F922 /* NearbyViewCell.swift */,
-				B35F55441CCA7C600050EFFA /* Main.storyboard */,
 				6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */,
-				B35F55541CCAA38F0050EFFA /* StatusBar.swift */,
-				B35F55521CCA912C0050EFFA /* StatusBar.xib */,
+				6A92C2FF1CCAC94800E1F922 /* Services.swift */,
+				B35F55441CCA7C600050EFFA /* Main.storyboard */,
 				6A92C2FA1CCA9D8A00E1F922 /* LimeIzard-Bridging-Header.h */,
 				B35F55471CCA7C600050EFFA /* Assets.xcassets */,
 				B35F55491CCA7C600050EFFA /* LaunchScreen.storyboard */,
@@ -176,7 +173,6 @@
 				B35F554B1CCA7C600050EFFA /* LaunchScreen.storyboard in Resources */,
 				B35F55481CCA7C600050EFFA /* Assets.xcassets in Resources */,
 				B35F55461CCA7C600050EFFA /* Main.storyboard in Resources */,
-				B35F55531CCA912C0050EFFA /* StatusBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,9 +235,9 @@
 				6A92C2F91CCA99A200E1F922 /* NearbyViewCell.swift in Sources */,
 				6A92C2F71CCA98FF00E1F922 /* NearbyViewController.swift in Sources */,
 				B399B0901CCAA67B00090CB9 /* UIColorExtension.swift in Sources */,
-				B35F55551CCAA38F0050EFFA /* StatusBar.swift in Sources */,
 				6A92C2FC1CCAA50400E1F922 /* TabBarViewController.swift in Sources */,
 				B35F553F1CCA7C600050EFFA /* AppDelegate.swift in Sources */,
+				6A92C3001CCAC94800E1F922 /* Services.swift in Sources */,
 				B35F55411CCA7C600050EFFA /* ProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
