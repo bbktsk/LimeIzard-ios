@@ -7,15 +7,34 @@
 //
 
 import UIKit
+import KontaktSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var beaconManager: KTKBeaconManager!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        beaconManager = KTKBeaconManager(delegate: self)
+        beaconManager.requestLocationAlwaysAuthorization()
+        
+        // Region
+        let proximityUUID = NSUUID(UUIDString: "11f10af9-8ec0-4e88-bc27-3fb17effe8bf")
+        let region = KTKBeaconRegion(proximityUUID: proximityUUID!, identifier: "region-identifier")
+        
+        // Region Properties
+        region.notifyEntryStateOnDisplay = true
+        
+        //beaconManager.stopMonitoringForAllRegions()
+        
+        // Start Ranging
+        beaconManager.startRangingBeaconsInRegion(region)
+        beaconManager.startMonitoringForRegion(region)
+        beaconManager.requestStateForRegion(region)
+        
         return true
     }
 
@@ -44,3 +63,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+extension AppDelegate: KTKBeaconManagerDelegate {
+    
+    func beaconManager(manager: KTKBeaconManager, didDetermineState state: CLRegionState, forRegion region: KTKBeaconRegion) {
+        print("Did determine state \"\(state.rawValue)\" for region: \(region)")
+    }
+    
+    func beaconManager(manager: KTKBeaconManager, didChangeLocationAuthorizationStatus status: CLAuthorizationStatus) {
+        print("Did change location authorization status to: \(status.rawValue)")
+    }
+    
+    func beaconManager(manager: KTKBeaconManager, monitoringDidFailForRegion region: KTKBeaconRegion?, withError error: NSError?) {
+        print("Monitoring did fail for region: \(region)")
+        print("Error: \(error)")
+    }
+    
+    func beaconManager(manager: KTKBeaconManager, didStartMonitoringForRegion region: KTKBeaconRegion) {
+        print("Did start monitoring for region: \(region)")
+    }
+    
+    func beaconManager(manager: KTKBeaconManager, didEnterRegion region: KTKBeaconRegion) {
+        print("Did enter region: \(region)")
+    }
+    
+    func beaconManager(manager: KTKBeaconManager, didExitRegion region: KTKBeaconRegion) {
+        print("Did exit region \(region)")
+    }
+    
+    func beaconManager(manager: KTKBeaconManager, didRangeBeacons beacons: [CLBeacon], inRegion region: KTKBeaconRegion) {
+        print("Did ranged \"\(beacons.count)\" beacons inside region: \(region)")
+        
+        if let closestBeacon = beacons.sort({ $0.0.accuracy < $0.1.accuracy }).first where closestBeacon.accuracy > 0 {
+            print("Closest Beacon is M: \(closestBeacon.major), m: \(closestBeacon.minor) ~ \(closestBeacon.accuracy) meters away.")
+        }
+    }
+}

@@ -9,7 +9,7 @@
         <!--First View-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="First View" id="9pv-A4-QxB" customClass="FirstViewController" customModule="LimeIzard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="First View" id="9pv-A4-QxB" customClass="ProfileViewController" customModule="LimeIzard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -41,7 +41,7 @@
         <!--Nearby-->
         <scene sceneID="mC6-mo-AOg">
             <objects>
-                <viewController id="Uwl-GB-4np" sceneMemberID="viewController">
+                <viewController id="Uwl-GB-4np" customClass="NearbyViewController" customModule="LimeIzard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C9K-G9-t9S"/>
                         <viewControllerLayoutGuide type="bottom" id="XoN-84-RO2"/>
@@ -54,11 +54,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Hit" selectionStyle="none" indentationWidth="10" reuseIdentifier="Hit" id="EiY-tk-iqt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Hit" selectionStyle="none" indentationWidth="10" reuseIdentifier="NearbyCell" id="EiY-tk-iqt" customClass="NearbyViewCell" customModule="LimeIzard" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EiY-tk-iqt" id="s2c-6h-dzy">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-dU-Fwg">
@@ -107,8 +107,15 @@
                                                 <constraint firstItem="eGt-Ky-BlV" firstAttribute="centerY" secondItem="Soe-dU-Fwg" secondAttribute="centerY" id="m6x-KM-QdZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userImage" destination="Soe-dU-Fwg" id="5ia-lT-TK2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Uwl-GB-4np" id="syU-fy-bGp"/>
+                                    <outlet property="delegate" destination="Uwl-GB-4np" id="Fsl-aU-RWc"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -120,6 +127,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Nearby" image="second" selectedImage="second" id="Ct9-Dg-Q32"/>
+                    <connections>
+                        <outlet property="tableView" destination="7Pk-Wk-RJg" id="UEA-JE-six"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znL-RB-hfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -128,7 +138,7 @@
         <!--Second View-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Second View" id="8rJ-Kc-sve" customClass="SecondViewController" customModule="LimeIzard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Second View" id="8rJ-Kc-sve" customClass="MapViewController" customModule="LimeIzard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>

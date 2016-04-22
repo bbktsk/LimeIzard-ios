@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  ProfileViewController.swift
 //  LimeIzard
 //
 //  Created by Pavel Hamrik on 22/04/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
