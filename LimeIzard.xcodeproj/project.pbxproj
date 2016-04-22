@@ -17,6 +17,7 @@
 		B35F55481CCA7C600050EFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35F55471CCA7C600050EFFA /* Assets.xcassets */; };
 		B35F554B1CCA7C600050EFFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B35F55491CCA7C600050EFFA /* LaunchScreen.storyboard */; };
 		B35F55531CCA912C0050EFFA /* StatusBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35F55521CCA912C0050EFFA /* StatusBar.xib */; };
+		B35F55551CCAA38F0050EFFA /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F55541CCAA38F0050EFFA /* StatusBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B35F554A1CCA7C600050EFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B35F554C1CCA7C600050EFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B35F55521CCA912C0050EFFA /* StatusBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBar.xib; sourceTree = "<group>"; };
+		B35F55541CCAA38F0050EFFA /* StatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				B35F55401CCA7C600050EFFA /* ProfileViewController.swift */,
 				6A92C2F81CCA99A200E1F922 /* NearbyViewCell.swift */,
 				B35F55441CCA7C600050EFFA /* Main.storyboard */,
+				B35F55541CCAA38F0050EFFA /* StatusBar.swift */,
 				B35F55521CCA912C0050EFFA /* StatusBar.xib */,
 				6A92C2FA1CCA9D8A00E1F922 /* LimeIzard-Bridging-Header.h */,
 				B35F55471CCA7C600050EFFA /* Assets.xcassets */,
@@ -137,7 +140,7 @@
 				TargetAttributes = {
 					B35F553A1CCA7C600050EFFA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = YAY8QNNRBC;
+						DevelopmentTeam = MZ45TX74QY;
 					};
 				};
 			};
@@ -229,6 +232,7 @@
 				B35F55431CCA7C600050EFFA /* MapViewController.swift in Sources */,
 				6A92C2F91CCA99A200E1F922 /* NearbyViewCell.swift in Sources */,
 				6A92C2F71CCA98FF00E1F922 /* NearbyViewController.swift in Sources */,
+				B35F55551CCAA38F0050EFFA /* StatusBar.swift in Sources */,
 				B35F553F1CCA7C600050EFFA /* AppDelegate.swift in Sources */,
 				B35F55411CCA7C600050EFFA /* ProfileViewController.swift in Sources */,
 			);
