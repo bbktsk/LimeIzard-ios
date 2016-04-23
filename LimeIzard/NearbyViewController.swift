@@ -55,12 +55,13 @@ extension NearbyViewController : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return UsersNearby.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCellWithIdentifier(nearbyCellIdentifier, forIndexPath: indexPath) as? NearbyViewCell {
+            cell.loadFromUser(UsersNearby[indexPath.row])
             return cell
         }
         return UITableViewCell()

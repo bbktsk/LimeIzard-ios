@@ -34,5 +34,12 @@ class NearbyViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    func loadFromUser(user: User) {
+        self.userNameLabel.text = user.firstName
+        self.userImage.image = getFBImage(user.fbID)
+    }
+    
 
 }

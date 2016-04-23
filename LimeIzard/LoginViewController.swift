@@ -117,7 +117,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             else {
                 firstName = usr.fbName
             }
-            let ide = usr.fbID
+            
             userData.updateValue(usr.fbID, forKey: "fb_id")
             userData.updateValue(firstName, forKey: "first_name")
             userData.updateValue(lastName, forKey: "last_name")
