@@ -11,6 +11,8 @@ import SnapKit
 
 class TabBarViewController: UITabBarController {
     
+    @IBOutlet weak var nearbyIndicator: UIBarButtonItem!
+    
     weak var statusBar: UIView!
     weak var availableButton: UIButton!
     weak var taglineButton: UIButton!
@@ -88,6 +90,8 @@ class TabBarViewController: UITabBarController {
             make.top.equalTo(statusBar.snp_top)
             make.left.equalTo(130)
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TabBarViewController.nearbyIndicatorUpdate(_:)), name:"nearbyIndicatorUpdateNotification", object: nil)
     
     }
 
@@ -174,7 +178,6 @@ class TabBarViewController: UITabBarController {
 
     func composeTagline() {
 
-
         let composeAlert = UIAlertController(title: "Customize", message: "You're feeling...", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .Default, handler: {
@@ -204,6 +207,28 @@ class TabBarViewController: UITabBarController {
 
         self.presentViewController(composeAlert, animated: true, completion: nil)
         
+    }
+    
+    func nearbyIndicatorUpdate(notification: NSNotification) {
+        
+        let userinfo = notification.userInfo
+        if userinfo?["proximity"] != nil {
+            let proximity = userinfo?["proximity"] as! Int
+            switch proximity {
+            case 0:
+                nearbyIndicator.image = UIImage(named: "nearby-1") as UIImage!
+            case 1:
+                nearbyIndicator.image = UIImage(named: "nearby-4") as UIImage!
+            case 2:
+                nearbyIndicator.image = UIImage(named: "nearby-3") as UIImage!
+            case 3:
+                nearbyIndicator.image = UIImage(named: "nearby-2") as UIImage!
+            default:
+                nearbyIndicator.image = UIImage(named: "nearby-1") as UIImage!
+            }
+            print("proximity update: \(proximity)")
+        }
+    
     }
     
     func checkForNearbyUsers() {

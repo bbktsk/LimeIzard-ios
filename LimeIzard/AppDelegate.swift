@@ -104,6 +104,8 @@ extension AppDelegate: KTKBeaconManagerDelegate {
             print(identifier)
             API.sendUserVisitBeacon(CurrentUser?.fbID ?? "0", beaconData: beaconData)
             
+            NSNotificationCenter.defaultCenter().postNotificationName("nearbyIndicatorUpdateNotification", object: nil, userInfo:["accuracy": closestBeacon.accuracy, "proximity": closestBeacon.proximity.rawValue])
+            
         }
     }
 }

@@ -350,6 +350,7 @@ while you commute</string>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
+                        <outlet property="nearbyIndicator" destination="OKH-BM-bY4" id="5uX-MR-Z2w"/>
                         <segue destination="Uwl-GB-4np" kind="relationship" relationship="viewControllers" id="S4c-9o-YrS"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
