@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //iBeacon
         let beacon = KTKBeaconManager(delegate: self)
         BeaconManager = beacon
-
+        
         
         return true
     }
@@ -93,10 +93,13 @@ extension AppDelegate: KTKBeaconManagerDelegate {
         print("Did ranged \"\(beacons.count)\" beacons inside region: \(region)")
         
         if let closestBeacon = beacons.sort({ $0.0.accuracy <= $0.1.accuracy }).first where closestBeacon.accuracy > 0 {
-            let identifier = "\(closestBeacon.proximityUUID.UUIDString)\(closestBeacon.major)\(closestBeacon.minor)"
-//            API.sendUserVisitBeacon(identifier, beaconData: <#T##[String : AnyObject]#>) {onComplete in
-            
-//            }
+            let identifier = "\(closestBeacon.proximityUUID.UUIDString)|\(closestBeacon.major)|\(closestBeacon.minor)"
+           
+            var beaconData = [String : AnyObject]()
+            beaconData.updateValue(closestBeacon.rssi, forKey: "signal")
+            beaconData.updateValue(identifier, forKey: "beacon_id")
+            print(identifier)
+            API.sendUserVisitBeacon((CurrentUser?.fbID) ?? "0", beaconData: beaconData)
         }
     }
 }

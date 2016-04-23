@@ -141,6 +141,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     func startTheGame() {
+        BeaconManager.requestLocationAlwaysAuthorization()
+        startRangingBeacons()
         performSegueWithIdentifier("startTheGame", sender: self)
     }
 
