@@ -232,8 +232,9 @@ class TabBarViewController: UITabBarController {
     }
     
     func checkForNearbyUsers() {
-        BeaconManager.requestLocationAlwaysAuthorization()
         startRangingBeacons()
+        BeaconManager.requestStateForRegion(MyRegion)
+        BeaconManager.requestLocationAlwaysAuthorization()
 //        var timer = NSTimer()
 //        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(TabBarViewController.stopChecking), userInfo: nil, repeats: false)
     }

@@ -29,17 +29,15 @@ var FBToken: FBSDKAccessToken?
 var CurrentUser: User?
 var UsersNearby = [User]()
 let UsersNearbyChanged = "UsersNearbyChanged"
+let MyRegion  = KTKBeaconRegion(proximityUUID: NSUUID(UUIDString: "11f10af9-8ec0-4e88-bc27-3fb17effe8bf")!, identifier: "region1")
 
 func startRangingBeacons() {
 
-    let proximityUUID = NSUUID(UUIDString: "11f10af9-8ec0-4e88-bc27-3fb17effe8bf")
-    let region = KTKBeaconRegion(proximityUUID: proximityUUID!, identifier: "region1")
-    region.notifyEntryStateOnDisplay = true
+    MyRegion.notifyEntryStateOnDisplay = true
 
     // Start Ranging
-    BeaconManager.startRangingBeaconsInRegion(region)
-    BeaconManager.startMonitoringForRegion(region)
-    BeaconManager.requestStateForRegion(region)
+    BeaconManager.startMonitoringForRegion(MyRegion)
+    BeaconManager.requestStateForRegion(MyRegion)
 }
 
 func cropImageToSquare(image : UIImage?) -> UIImage? {

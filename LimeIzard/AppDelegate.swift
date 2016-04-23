@@ -67,6 +67,7 @@ extension AppDelegate: KTKBeaconManagerDelegate {
     
     func beaconManager(manager: KTKBeaconManager, didDetermineState state: CLRegionState, forRegion region: KTKBeaconRegion) {
         print("Did determine state \"\(state.rawValue)\" for region: \(region)")
+        BeaconManager.startRangingBeaconsInRegion(region)
     }
     
     func beaconManager(manager: KTKBeaconManager, didChangeLocationAuthorizationStatus status: CLAuthorizationStatus) {
@@ -84,6 +85,9 @@ extension AppDelegate: KTKBeaconManagerDelegate {
     
     func beaconManager(manager: KTKBeaconManager, didEnterRegion region: KTKBeaconRegion) {
         print("Did enter region: \(region)")
+        
+        BeaconManager.startRangingBeaconsInRegion(region)
+        
     }
     
     func beaconManager(manager: KTKBeaconManager, didExitRegion region: KTKBeaconRegion) {
@@ -106,6 +110,7 @@ extension AppDelegate: KTKBeaconManagerDelegate {
             
             NSNotificationCenter.defaultCenter().postNotificationName("nearbyIndicatorUpdateNotification", object: nil, userInfo:["accuracy": closestBeacon.accuracy, "proximity": closestBeacon.proximity.rawValue])
             
+            BeaconManager.stopRangingBeaconsInAllRegions()
         }
     }
 }
