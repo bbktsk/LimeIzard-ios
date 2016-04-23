@@ -12,6 +12,8 @@
 		6A92C2FC1CCAA50400E1F922 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */; };
 		6A92C3001CCAC94800E1F922 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C2FF1CCAC94800E1F922 /* Services.swift */; };
 		6A92C3021CCAD7C300E1F922 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92C3011CCAD7C300E1F922 /* LoginViewController.swift */; };
+		6AB2EBBF1CCAE249000EE1B6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB2EBBD1CCAE249000EE1B6 /* FBSDKCoreKit.framework */; };
+		6AB2EBC01CCAE249000EE1B6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB2EBBE1CCAE249000EE1B6 /* FBSDKLoginKit.framework */; };
 		B0F0FFF8D874D32AF1548DE7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE960E1D2FEFAEA6CED6430 /* Pods.framework */; };
 		B35F553F1CCA7C600050EFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F553E1CCA7C600050EFFA /* AppDelegate.swift */; };
 		B35F55411CCA7C600050EFFA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F55401CCA7C600050EFFA /* ProfileViewController.swift */; };
@@ -30,6 +32,9 @@
 		6A92C2FB1CCAA50400E1F922 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6A92C2FF1CCAC94800E1F922 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		6A92C3011CCAD7C300E1F922 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6AB2EBBB1CCAE208000EE1B6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Downloads/FacebookSDKs-iOS-20160412/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		6AB2EBBD1CCAE249000EE1B6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		6AB2EBBE1CCAE249000EE1B6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		8CE960E1D2FEFAEA6CED6430 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E19C620DBF123224852007 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B35F553B1CCA7C600050EFFA /* LimeIzard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimeIzard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +54,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F0FFF8D874D32AF1548DE7 /* Pods.framework in Frameworks */,
+				6AB2EBBF1CCAE249000EE1B6 /* FBSDKCoreKit.framework in Frameworks */,
+				6AB2EBC01CCAE249000EE1B6 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +74,9 @@
 		AC4A34FE427CBF0A06F64577 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AB2EBBD1CCAE249000EE1B6 /* FBSDKCoreKit.framework */,
+				6AB2EBBE1CCAE249000EE1B6 /* FBSDKLoginKit.framework */,
+				6AB2EBBB1CCAE208000EE1B6 /* FBSDKLoginKit.framework */,
 				8CE960E1D2FEFAEA6CED6430 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -146,7 +156,7 @@
 				TargetAttributes = {
 					B35F553A1CCA7C600050EFFA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = MZ45TX74QY;
+						DevelopmentTeam = YAY8QNNRBC;
 					};
 				};
 			};
@@ -360,6 +370,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = LimeIzard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bubble.app;
@@ -375,6 +389,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = LimeIzard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bubble.app;

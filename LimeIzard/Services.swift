@@ -10,9 +10,17 @@ import Foundation
 import KontaktSDK
 import Alamofire
 import SwiftyJSON
+import FBSDKLoginKit
+
+struct User {
+    var fbID: String?
+    var fbName: String?
+}
 
 var BeaconManager: KTKBeaconManager!
 let API = WebAPI._instance
+var FBToken: FBSDKAccessToken?
+var CurrentUser: User?
 
 func startRangingBeacons() {
 
