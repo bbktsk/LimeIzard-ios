@@ -13,14 +13,18 @@ import SwiftyJSON
 import FBSDKLoginKit
 
 struct User {
-    var fbID: String?
-    var fbName: String?
+    var fbID: String
+    var fbName: String
+    var firstName: String?
+    var lastName: String?
+    var fbImage: String?
 }
 
 var BeaconManager: KTKBeaconManager!
 let API = WebAPI._instance
 var FBToken: FBSDKAccessToken?
 var CurrentUser: User?
+var usersNearby = [User]()
 
 func startRangingBeacons() {
 
@@ -50,7 +54,7 @@ class WebAPI {
         case UserInfo(userID: String)
         case UserUpdate(userID: String)
         case UserVisitBeacon(userID: String, beaconData: [String: AnyObject])
-        
+        case UserCreate(user: [String: AnyObject])
         
         var method : Alamofire.Method {
             switch self {
@@ -58,6 +62,8 @@ class WebAPI {
                 return .GET
             case .UserUpdate:
                 return .PUT
+            case .UserCreate :
+                return .POST
             case .UserVisitBeacon:
                 return .POST
             }
@@ -69,6 +75,8 @@ class WebAPI {
                 return "users/\(userID)"
             case .UserUpdate(let userID):
                 return "users/\(userID)"
+            case .UserCreate:
+                return "users/"
             case .UserVisitBeacon(let userID):
                 return "users/\(userID)/visit"
             }
@@ -85,6 +93,8 @@ class WebAPI {
            
             
             switch self {
+            case .UserCreate(let user):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: user).0
             case .UserVisitBeacon(_, let beaconData):
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: beaconData).0
             default:
@@ -95,7 +105,7 @@ class WebAPI {
         
     }
     
-    func getUserInfo(userID: String, onComplete: (Int?, JSON?, NSError?) -> Void) {
+    func getUserInfo(userID: String, onComplete: (JSON?, NSError?) -> Void) {
         Alamofire.request(Router.UserInfo(userID: userID))
             .responseJSON { response in
                 print("---------------------------")
@@ -104,13 +114,32 @@ class WebAPI {
                 print(response.data)     // server data
                 print(response.result)   // result of response serialization
                 
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                }
+                let json = response.result.value as? JSON
+                print(json)
+                onComplete(json, nil)
+                
         }
     }
     
     
+    func createUser(user: [String: AnyObject], onComplete: (JSON?, NSError?) -> Void) {
+        Alamofire.request(Router.UserCreate(user: user))
+            .responseJSON { response in
+                print("---------------------------")
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                let json = response.result.value as? JSON
+                print(json)
+                onComplete(json, nil)
+        }
+    }
+    
+    func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject], onComplete: JSON? -> Void) {
+        
+    }
     
     
 }

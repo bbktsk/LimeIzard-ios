@@ -26,11 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BeaconManager = beacon
 
         
-        API.getUserInfo("12") { (code, data, error) in
-            print("")
-        }
-        //fb secret: ca7ac689ff74094d85ee28d9170ae651
-        
         return true
     }
 

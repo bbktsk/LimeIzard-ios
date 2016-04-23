@@ -39,21 +39,23 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if let token = FBSDKAccessToken.currentAccessToken()  {
             FBToken = token
-            getUserData()
+            getUserFBData()
+            checkOrCreateUser()
         }
         
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         FBToken = FBSDKAccessToken.currentAccessToken()
-        getUserData()
+        getUserFBData()
+        checkOrCreateUser()
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("you have logged out")
     }
     
-    func getUserData() {
+    func getUserFBData() {
         if let tokenString = FBToken?.tokenString {
             SVProgressHUD.setDefaultStyle(.Dark)
             SVProgressHUD.show()
@@ -67,9 +69,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let fbID = result.valueForKey("id") as? String
                     let fbName = result.valueForKey("name") as? String
                     
-                    CurrentUser = User(fbID: fbID, fbName: fbName)
-                    self.prepareForSeque()
+                    CurrentUser = User(fbID: fbID ?? "0", fbName: fbName ?? "noname", firstName: "", lastName: "", fbImage: "")
+                    
                     SVProgressHUD.showSuccessWithStatus("CONNECTED")
+                    self.checkOrCreateUser()
                 }
                 else {
                     
@@ -77,6 +80,55 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     print("error \(error)")
                 }
             })
+        }
+    }
+    
+    
+    func checkOrCreateUser() {
+        if let usr = CurrentUser {
+            API.getUserInfo(usr.fbID) { (json, error) in
+                
+                if let json = json {
+                    print("succ")
+                    self.prepareForSeque()
+                }
+                else {
+                    print("creating user")
+                    self.createUser()
+                }
+                
+            }
+        }
+        
+    }
+    
+    func createUser() {
+        if let usr = CurrentUser {
+            var userData = [String: AnyObject]()
+            var firstName = ""
+            var lastName = ""
+            
+            let range = usr.fbName.rangeOfString(" ")
+            if let range = range {
+                
+                firstName = usr.fbName.substringToIndex(range.endIndex)
+                lastName = usr.fbName.substringFromIndex(range.endIndex)
+            }
+            else {
+                firstName = usr.fbName
+            }
+            
+            userData.updateValue(usr.fbID, forKey: "fb_id")
+            userData.updateValue(firstName, forKey: "first_name")
+            userData.updateValue(lastName, forKey: "last_name")
+            
+            API.createUser(userData) { (json, error) in
+                
+                if let json = json{
+                    
+                }
+                self.prepareForSeque()
+            }
         }
     }
     
