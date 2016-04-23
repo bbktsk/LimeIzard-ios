@@ -15,6 +15,7 @@ class TabBarViewController: UITabBarController {
     weak var availableButton: UIButton!
     weak var taglineButton: UIButton!
     var available = false
+    var nearbyTimer: NSTimer?
     
 
     let feelings = [
@@ -91,6 +92,12 @@ class TabBarViewController: UITabBarController {
         
         taglineButton.addTarget(self, action: #selector(TabBarViewController.changeTagline), forControlEvents: .TouchUpInside)
         taglineButton.setTitle(feelings["happy"], forState: .Normal)
+        
+        
+        var nearbyTimer = NSTimer()
+        nearbyTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(TabBarViewController.checkForNearbyUsers), userInfo: nil, repeats: true)
+        self.nearbyTimer = nearbyTimer
+        checkForNearbyUsers()
     }
 
    
@@ -189,6 +196,15 @@ class TabBarViewController: UITabBarController {
         self.presentViewController(composeAlert, animated: true, completion: nil)
         
     }
-
-
+    
+    func checkForNearbyUsers() {
+        BeaconManager.requestLocationAlwaysAuthorization()
+        startRangingBeacons()
+//        var timer = NSTimer()
+//        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(TabBarViewController.stopChecking), userInfo: nil, repeats: false)
+    }
+    
+//    func stopChecking() {
+//        BeaconManager.stopMonitoringForAllRegions()
+//    }
 }

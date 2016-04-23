@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var beaconManager: KTKBeaconManager!
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -97,9 +98,12 @@ extension AppDelegate: KTKBeaconManagerDelegate {
            
             var beaconData = [String : AnyObject]()
             beaconData.updateValue(closestBeacon.rssi, forKey: "signal")
-            beaconData.updateValue(identifier, forKey: "beacon_id")
+            beaconData.updateValue(identifier, forKey: "beacon_uuid")
+            beaconData.updateValue(0, forKey: "longitude")
+            beaconData.updateValue(0, forKey: "latitude")
             print(identifier)
             API.sendUserVisitBeacon((CurrentUser?.fbID) ?? "0", beaconData: beaconData)
+            
         }
     }
 }

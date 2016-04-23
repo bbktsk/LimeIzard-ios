@@ -153,7 +153,7 @@ class WebAPI {
                 return "users/\(userID)"
             case .UserCreate:
                 return "users"
-            case .UserVisitBeacon(let userID):
+            case .UserVisitBeacon(let userID, _):
                 return "users/\(userID)/visit"
             }
         }

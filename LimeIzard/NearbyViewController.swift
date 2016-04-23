@@ -13,7 +13,6 @@ class NearbyViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let nearbyCellIdentifier = "NearbyCell"
-    var nearbyTimer: NSTimer?
     
     
     override func viewDidLoad() {
@@ -29,6 +28,10 @@ class NearbyViewController: UIViewController {
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(NearbyViewController.updateUsersNearby), name: UsersNearbyChanged, object: nil)
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -37,23 +40,11 @@ class NearbyViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    func startChecking() {
-        var nearbyTimer = NSTimer()
-        nearbyTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(NearbyViewController.checkForNearbyUsers), userInfo: nil, repeats: true)
-        self.nearbyTimer = nearbyTimer
-    }
-    
-    func stopChecking() {
-        nearbyTimer?.invalidate()
-    }
-    
-    func checkForNearbyUsers() {
-        
-    }
     
     func updateUsersNearby() {
         
     }
+    
 
 
 }
