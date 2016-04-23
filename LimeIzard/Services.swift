@@ -144,7 +144,7 @@ class WebAPI {
         }
     }
     
-    func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject], onComplete: [String: AnyObject]? -> Void) {
+    func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject]) {
         Alamofire.request(Router.UserVisitBeacon(userID: userID, beaconData: beaconData))
             .responseJSON { response in
                 print("---------------------------")
@@ -166,9 +166,6 @@ class WebAPI {
                             print("adding user \(name)")
                         }
                     }
-                }
-                else {
-                    
                 }
                 
                 let nc = NSNotificationCenter.defaultCenter()
