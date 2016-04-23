@@ -20,6 +20,7 @@ class NearbyViewController: UIViewController {
 
         
         
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Alert , categories: nil))
         
     }
     

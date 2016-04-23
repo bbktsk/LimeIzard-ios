@@ -251,6 +251,10 @@ class WebAPI {
         }
     }
     
+    func updateUser(user: [String: AnyObject]) {
+        
+    }
+    
     func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject]) {
         Alamofire.request(Router.UserVisitBeacon(userID: userID, beaconData: beaconData))
             .responseJSON { response in
@@ -287,12 +291,7 @@ class WebAPI {
             Alamofire.request(Router.PokeUser(myID: usr.fbID, hisID: targetID))
                 .responseJSON { response in
                     
-                    if (response.result.isSuccess) {
-                        SVProgressHUD.showSuccessWithStatus("Poke successful")
-                    }
-                    else {
-                        SVProgressHUD.showErrorWithStatus("There was problem sending the Poke")
-                    }
+                    SVProgressHUD.showSuccessWithStatus("")
                     
             }
         }
@@ -307,14 +306,15 @@ class WebAPI {
             Alamofire.request(Router.GetPokes(myID: usr.fbID))
                 .responseJSON { response in
                     
-                    if let json = response.result.value as? [String: AnyObject] {
-                        print(NSString(data: response.data!, encoding:NSUTF8StringEncoding)!)
-                        sendPokeNotif(json["first_name"] as? String ?? "--" )
+                    if let json = response.result.value as? [AnyObject] {
+                        for poke in json  {
+                            if let poke = poke as? [String: AnyObject] {
+                                print(NSString(data: response.data!, encoding:NSUTF8StringEncoding)!)
+                                sendPokeNotif(poke["first_name"] as? String ?? "--" )
+                            }
+                        }
                     }
             }
-        }
-        else {
-            SVProgressHUD.showErrorWithStatus("There was problem sending the Poke")
         }
     }
 }
