@@ -76,6 +76,7 @@ class TabBarViewController: UITabBarController {
             make.bottom.equalTo(statusBar.snp_top)
             make.left.right.equalTo(statusBar)
         }
+        statusBar.backgroundColor = UIColor.whiteColor()
     
     }
 

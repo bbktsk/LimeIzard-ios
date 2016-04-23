@@ -10,19 +10,21 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    // section / row / label+value
     var profile = [
         [
-            "Name": "Martin",
-            "Gender": "Male"
+            ["label": "Name", "value": "Martin Vytrhlik"],
+            ["label": "Gender", "value": "Male"]
         ],
         [
-            "Label": "Value"
+            ["label": "Conversations", "value": "12 last month. Great!"],
+            ["label": "Mostly Feeling", "value": "\u{1F60A} Cheerful"]
         ]
     ]
     
     let profileSections = [
         "You",
-        "Other"
+        "Usage"
     ]
 
     @IBOutlet weak var tableView: UITableView!
@@ -43,13 +45,14 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profile.count
+        return profile[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCellWithIdentifier(profileCellIdentifier, forIndexPath: indexPath) as? ProfileCell {
-            //cell.preferenceLabel?.text = profile[indexPath.section][indexPath.row]
+            cell.profileRowLabel?.text = profile[indexPath.section][indexPath.row]["label"]
+            cell.profileRowValue?.text = profile[indexPath.section][indexPath.row]["value"]
             
             return cell
         }
@@ -58,7 +61,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return profile.count
+        return profileSections.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
