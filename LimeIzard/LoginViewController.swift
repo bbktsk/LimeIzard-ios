@@ -22,10 +22,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.readPermissions = ["public_profile", "email"]
         view.addSubview(loginButton)
         loginButton.snp_makeConstraints() {make in
-            make.bottom.equalTo(view).offset(-15)
-            make.left.equalTo(view).offset(10)
-            make.right.equalTo(view).offset(-10)
-            make.height.equalTo(44)
+            make.bottom.equalTo(view).offset(-90)
+            make.left.equalTo(view).offset(15)
+            make.right.equalTo(view).offset(-15)
+            make.height.equalTo(50)
         }
         self.loginButton = loginButton
     }
@@ -141,8 +141,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     func startTheGame() {
-        // TODO
-        //performSegueWithIdentifier("startTheGame", sender: self)
+        performSegueWithIdentifier("startTheGame", sender: self)
     }
 
 }
