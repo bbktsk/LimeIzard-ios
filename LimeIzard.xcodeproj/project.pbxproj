@@ -15,6 +15,7 @@
 		6AB2EBBF1CCAE249000EE1B6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB2EBBD1CCAE249000EE1B6 /* FBSDKCoreKit.framework */; };
 		6AB2EBC01CCAE249000EE1B6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB2EBBE1CCAE249000EE1B6 /* FBSDKLoginKit.framework */; };
 		B0F0FFF8D874D32AF1548DE7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE960E1D2FEFAEA6CED6430 /* Pods.framework */; };
+		B32E8D161CCB4CC5001587C8 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32E8D151CCB4CC4001587C8 /* ProfileCell.swift */; };
 		B35F553F1CCA7C600050EFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F553E1CCA7C600050EFFA /* AppDelegate.swift */; };
 		B35F55411CCA7C600050EFFA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F55401CCA7C600050EFFA /* ProfileViewController.swift */; };
 		B35F55431CCA7C600050EFFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F55421CCA7C600050EFFA /* MapViewController.swift */; };
@@ -37,6 +38,7 @@
 		6AB2EBBE1CCAE249000EE1B6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		8CE960E1D2FEFAEA6CED6430 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E19C620DBF123224852007 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B32E8D151CCB4CC4001587C8 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		B35F553B1CCA7C600050EFFA /* LimeIzard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimeIzard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35F553E1CCA7C600050EFFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B35F55401CCA7C600050EFFA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				B35F55491CCA7C600050EFFA /* LaunchScreen.storyboard */,
 				B35F554C1CCA7C600050EFFA /* Info.plist */,
 				B399B08F1CCAA67B00090CB9 /* UIColorExtension.swift */,
+				B32E8D151CCB4CC4001587C8 /* ProfileCell.swift */,
 			);
 			path = LimeIzard;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				B35F553F1CCA7C600050EFFA /* AppDelegate.swift in Sources */,
 				6A92C3001CCAC94800E1F922 /* Services.swift in Sources */,
 				B35F55411CCA7C600050EFFA /* ProfileViewController.swift in Sources */,
+				B32E8D161CCB4CC5001587C8 /* ProfileCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
