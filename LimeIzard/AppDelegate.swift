@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //iBeacon
         let beacon = KTKBeaconManager(delegate: self)
         BeaconManager = beacon
-        
+
         
         return true
     }
@@ -102,7 +102,7 @@ extension AppDelegate: KTKBeaconManagerDelegate {
             beaconData.updateValue(0, forKey: "longitude")
             beaconData.updateValue(0, forKey: "latitude")
             print(identifier)
-            API.sendUserVisitBeacon((CurrentUser?.fbID) ?? "0", beaconData: beaconData)
+            API.sendUserVisitBeacon(CurrentUser?.fbID ?? "0", beaconData: beaconData)
             
         }
     }

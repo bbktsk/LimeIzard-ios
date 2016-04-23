@@ -93,7 +93,75 @@
                     <view key="view" contentMode="scaleToFill" id="bKk-a6-S8w">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rmT-y1-Pvl">
+                                <rect key="frame" x="0.0" y="70" width="600" height="460"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoFull" translatesAutoresizingMaskIntoConstraints="NO" id="Rk5-PX-TXB">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="Cmb-ce-SB6"/>
+                                            <constraint firstAttribute="height" constant="100" id="TeU-eL-NYp"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Cmb-ce-SB6"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-FA-6BQ">
+                                        <rect key="frame" x="0.0" y="100" width="600" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="6FO-I0-89L"/>
+                                            <constraint firstAttribute="height" constant="80" id="txK-P4-3Rv"/>
+                                        </constraints>
+                                        <string key="text">Find amazing people to talk to
+while you commute</string>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="txK-P4-3Rv"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xx8-W2-4CD">
+                                        <rect key="frame" x="0.0" y="210" width="600" height="250"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginIllustration" translatesAutoresizingMaskIntoConstraints="NO" id="i7d-aN-R6d">
+                                                <rect key="frame" x="0.0" y="-70" width="600" height="320"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="i7d-aN-R6d" firstAttribute="top" secondItem="xx8-W2-4CD" secondAttribute="top" constant="-70" id="17Q-z2-gaZ"/>
+                                            <constraint firstAttribute="height" constant="250" id="31j-CE-PSz"/>
+                                            <constraint firstItem="i7d-aN-R6d" firstAttribute="leading" secondItem="xx8-W2-4CD" secondAttribute="leading" id="NnC-x0-fYH"/>
+                                            <constraint firstAttribute="bottom" secondItem="i7d-aN-R6d" secondAttribute="bottom" id="fgY-JH-qaK"/>
+                                            <constraint firstAttribute="trailing" secondItem="i7d-aN-R6d" secondAttribute="trailing" id="fyT-30-k94"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xx8-W2-4CD" firstAttribute="leading" secondItem="rmT-y1-Pvl" secondAttribute="leading" id="cjW-UL-x3n"/>
+                                    <constraint firstAttribute="trailing" secondItem="xx8-W2-4CD" secondAttribute="trailing" id="idi-oP-SGA"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rmT-y1-Pvl" firstAttribute="top" secondItem="bKk-a6-S8w" secondAttribute="top" constant="30" id="FIq-1b-C4B"/>
+                            <constraint firstItem="rmT-y1-Pvl" firstAttribute="centerY" secondItem="bKk-a6-S8w" secondAttribute="centerY" id="N0n-PC-fQ0"/>
+                            <constraint firstAttribute="bottom" secondItem="rmT-y1-Pvl" secondAttribute="bottom" constant="1400" id="Uxt-hC-Qd0"/>
+                            <constraint firstAttribute="trailing" secondItem="rmT-y1-Pvl" secondAttribute="trailing" id="rQ3-Pj-iSz"/>
+                            <constraint firstItem="rmT-y1-Pvl" firstAttribute="leading" secondItem="bKk-a6-S8w" secondAttribute="leading" id="ra3-lq-8zY"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FIq-1b-C4B"/>
+                                <exclude reference="Uxt-hC-Qd0"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <segue destination="qK0-qw-5ro" kind="show" identifier="startTheGame" id="x4c-dC-Aey"/>
@@ -263,11 +331,13 @@
             </objects>
             <point key="canvasLocation" x="-740" y="-531"/>
         </scene>
-        <!--Lime Izard-->
+        <!--Babble-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" customClass="TabBarViewController" customModule="LimeIzard" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Lime Izard" id="TEt-WA-cv9"/>
+                    <navigationItem key="navigationItem" title="Babble" id="TEt-WA-cv9">
+                        <barButtonItem key="leftBarButtonItem" image="nearby-1" id="OKH-BM-bY4"/>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -291,10 +361,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LoginIllustration" width="2000" height="847"/>
+        <image name="LogoFull" width="1562" height="1051"/>
         <image name="izard-neg" width="25" height="25"/>
         <image name="izard-pos" width="25" height="25"/>
         <image name="map-neg" width="25" height="25"/>
         <image name="map-pos" width="25" height="25"/>
+        <image name="nearby-1" width="22" height="22"/>
         <image name="person-neg" width="25" height="25"/>
         <image name="person-pos" width="25" height="25"/>
     </resources>

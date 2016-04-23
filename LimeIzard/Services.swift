@@ -33,85 +33,13 @@ let UsersNearbyChanged = "UsersNearbyChanged"
 func startRangingBeacons() {
 
     let proximityUUID = NSUUID(UUIDString: "11f10af9-8ec0-4e88-bc27-3fb17effe8bf")
-    let region = KTKBeaconRegion(proximityUUID: proximityUUID!, identifier: "region1")
+    let region = KTKBeaconRegion(proximityUUID: proximityUUID!, identifier: "region-identifier")
     region.notifyEntryStateOnDisplay = true
 
     // Start Ranging
     BeaconManager.startRangingBeaconsInRegion(region)
     BeaconManager.startMonitoringForRegion(region)
     BeaconManager.requestStateForRegion(region)
-}
-
-func cropImageToSquare(image : UIImage?) -> UIImage? {
-    if (image != nil) {
-        
-        let contextSize: CGSize = image!.size
-        
-        if (contextSize.height == contextSize.width) {
-            return image
-        }
-        
-        var posX: CGFloat = 0.0
-        var posY: CGFloat = 0.0
-        var cgwidth: CGFloat = CGFloat(contextSize.width)
-        var cgheight: CGFloat = CGFloat(contextSize.height)
-        
-        // See what size is longer and create the center off of that
-        if contextSize.width > contextSize.height {
-            posX = ((contextSize.width - contextSize.height) / 2)
-            posY = 0
-            cgwidth = contextSize.height
-            cgheight = contextSize.height
-        } else {
-            posX = 0
-            posY = ((contextSize.height - contextSize.width) / 2)
-            cgwidth = contextSize.width
-            cgheight = contextSize.width
-        }
-        
-        let rect: CGRect = CGRectMake(posX, posY, cgwidth, cgheight)
-        
-        // Create bitmap image from context using the rect
-        let imageRef: CGImageRef = CGImageCreateWithImageInRect(image!.CGImage, rect)!
-        
-        // Create a new image based on the imageRef and rotate back to the original orientation
-        let img: UIImage = UIImage(CGImage: imageRef, scale: image!.scale, orientation: image!.imageOrientation)
-        
-        return img
-        
-    }
-    return nil
-}
-
-func maskImageToCircle(image: UIImage) -> UIImage {
-    let imageView: UIImageView = UIImageView(image: cropImageToSquare(image))
-    var layer: CALayer = CALayer()
-    layer = imageView.layer
-    
-    layer.masksToBounds = true
-    layer.cornerRadius = CGFloat(image.size.height/2)
-    
-    UIGraphicsBeginImageContext(imageView.bounds.size)
-    layer.renderInContext(UIGraphicsGetCurrentContext()!)
-    let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    return roundedImage
-}
-
-func  getFacebookProfileUrl(fbID: String) -> NSURL?{
-    return NSURL(string: "https://graph.facebook.com/\(fbID)/picture?type=large")
-}
-
-func getFBImage(fbID: String) -> UIImage?{
-    if let url = getFacebookProfileUrl(fbID) {
-        if let data = NSData(contentsOfURL: url) {
-            if let img = UIImage(data: data) {
-                return img
-            }
-        }
-    }
-    return nil
 }
 
 class WebAPI {
@@ -216,7 +144,7 @@ class WebAPI {
         }
     }
     
-    func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject]) {
+    func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject], onComplete: [String: AnyObject]? -> Void) {
         Alamofire.request(Router.UserVisitBeacon(userID: userID, beaconData: beaconData))
             .responseJSON { response in
                 print("---------------------------")
@@ -238,6 +166,9 @@ class WebAPI {
                             print("adding user \(name)")
                         }
                     }
+                }
+                else {
+                    
                 }
                 
                 let nc = NSNotificationCenter.defaultCenter()

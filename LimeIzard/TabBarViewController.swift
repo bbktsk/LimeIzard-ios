@@ -78,6 +78,16 @@ class TabBarViewController: UITabBarController {
             make.left.right.equalTo(statusBar)
         }
         statusBar.backgroundColor = UIColor.whiteColor()
+        
+        let vSeparator = UIView()
+        vSeparator.backgroundColor = UIColor.lightGrayColor()
+        statusBar.addSubview(vSeparator)
+        vSeparator.snp_makeConstraints() { make in
+            make.width.equalTo(0.5)
+            make.bottom.equalTo(statusBar.snp_bottom)
+            make.top.equalTo(statusBar.snp_top)
+            make.left.equalTo(130)
+        }
     
     }
 
@@ -149,7 +159,6 @@ class TabBarViewController: UITabBarController {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
             (alert: UIAlertAction!) -> Void in
-            print("Cancelled")
         })
         
         optionMenu.addAction(happyAction)
