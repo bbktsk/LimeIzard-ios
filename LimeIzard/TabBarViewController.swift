@@ -19,6 +19,9 @@ class TabBarViewController: UITabBarController {
     var available = false
     var nearbyTimer: NSTimer?
     
+    weak var warningViewBGView: UIView!
+    weak var warningViewTextLabel: UILabel!
+    var warningViewShowed = false
 
     let feelings = [
         "happy": "\u{1F600} Happy",
@@ -91,7 +94,10 @@ class TabBarViewController: UITabBarController {
             make.left.equalTo(130)
         }
         
+        createWarningView()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TabBarViewController.nearbyIndicatorUpdate(_:)), name:"nearbyIndicatorUpdateNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TabBarViewController.showWarningMessage(_:)), name:"PokeReceived", object: nil)
     
     }
 
@@ -229,6 +235,60 @@ class TabBarViewController: UITabBarController {
             print("proximity update: \(proximity)")
         }
     
+    }
+    
+    func showWarningMessage(notification: NSNotification) {
+        
+        let userinfo = notification.userInfo
+        if userinfo?["name"] != nil {
+            let name = userinfo?["name"] as! String
+            warningViewTextLabel.text = "\(name) just poked you!"
+            if !warningViewShowed {
+                var deltaY = self.warningViewBGView.frame.height + 71
+                UIView.animateKeyframesWithDuration(3 , delay: 0, options: UIViewKeyframeAnimationOptions(), animations: {
+                    UIView.addKeyframeWithRelativeStartTime(0,
+                        relativeDuration: 0.05,
+                        animations: {
+                            self.warningViewShowed = true
+                            self.warningViewBGView.frame.origin.y += deltaY
+                    })
+                    UIView.addKeyframeWithRelativeStartTime(0.95,
+                        relativeDuration: 0.05,
+                        animations: {
+                            self.warningViewBGView.frame.origin.y -= deltaY
+                    })
+                    }, completion: { finished in
+                        self.warningViewShowed = false
+                })
+            }
+        }
+    }
+    
+    
+    func createWarningView() {
+        
+        let warningViewBGView = UIView()
+        warningViewBGView.backgroundColor = UIColor.redColor()
+        self.view.addSubview(warningViewBGView)
+        warningViewBGView.snp_makeConstraints() { make in
+            make.left.equalTo(self.view).offset(1)
+            make.right.equalTo(self.view).inset(1)
+            make.height.equalTo(45)
+            make.bottom.equalTo(self.view.snp_top)
+        }
+        self.warningViewBGView = warningViewBGView
+        
+        let warningViewTextLabel = UILabel()
+        warningViewTextLabel.font = UIFont.boldSystemFontOfSize(20)
+        warningViewTextLabel.textColor = .whiteColor()
+        warningViewTextLabel.textAlignment = .Center
+        warningViewTextLabel.adjustsFontSizeToFitWidth = true
+        warningViewTextLabel.minimumScaleFactor = 0.5
+        warningViewBGView.addSubview(warningViewTextLabel)
+        warningViewTextLabel.snp_makeConstraints() { make in
+            make.edges.equalTo(warningViewBGView).inset(3)
+        }
+        self.warningViewTextLabel = warningViewTextLabel
     }
     
     func checkForNearbyUsers() {

@@ -20,8 +20,6 @@ class NearbyViewController: UIViewController {
 
         
         
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Alert , categories: nil))
-        
     }
     
     override func viewWillAppear(animated: Bool) {

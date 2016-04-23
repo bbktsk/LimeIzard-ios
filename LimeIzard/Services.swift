@@ -309,8 +309,13 @@ class WebAPI {
                     if let json = response.result.value as? [AnyObject] {
                         for poke in json  {
                             if let poke = poke as? [String: AnyObject] {
-                                print(NSString(data: response.data!, encoding:NSUTF8StringEncoding)!)
-                                sendPokeNotif(poke["first_name"] as? String ?? "--" )
+//                                print(NSString(data: response.data!, encoding:NSUTF8StringEncoding)!)
+//                                sendPokeNotif(poke["first_name"] as? String ?? "--" )
+                                
+                                
+                                
+                                let nc = NSNotificationCenter.defaultCenter()
+                                nc.postNotificationName("PokeReceived", object: nil, userInfo:["name": poke["first_name"] as? String ?? "--"])
                             }
                         }
                     }
