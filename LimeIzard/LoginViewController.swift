@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let fbID = result.valueForKey("id") as? String
                     let fbName = result.valueForKey("name") as? String
                     
-                    CurrentUser = User(fbID: fbID ?? "0", fbName: fbName ?? "noname", firstName: "", lastName: "", fbImage: "")
+                    CurrentUser = User(fbID: fbID ?? "0", fbName: fbName ?? "noname", firstName: "", lastName: "", imgUrl: nil, mood: "", message: "", signal: 0)
                     
                     SVProgressHUD.showSuccessWithStatus("CONNECTED")
                     self.checkOrCreateUser()
@@ -86,9 +86,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func checkOrCreateUser() {
         if let usr = CurrentUser {
-            API.getUserInfo(usr.fbID) { (json, error) in
+            API.getUserInfo(usr.fbID) { (data, error) in
                 
-                if let json = json {
+                if let data = data {
                     print("succ")
                     self.prepareForSeque()
                 }
@@ -111,13 +111,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             let range = usr.fbName.rangeOfString(" ")
             if let range = range {
                 
-                firstName = usr.fbName.substringToIndex(range.endIndex)
+                firstName = usr.fbName.substringToIndex(range.endIndex).stringByReplacingOccurrencesOfString(" ", withString: "")
                 lastName = usr.fbName.substringFromIndex(range.endIndex)
             }
             else {
                 firstName = usr.fbName
             }
-            
+            let ide = usr.fbID
             userData.updateValue(usr.fbID, forKey: "fb_id")
             userData.updateValue(firstName, forKey: "first_name")
             userData.updateValue(lastName, forKey: "last_name")
@@ -125,7 +125,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             API.createUser(userData) { (json, error) in
                 
                 if let json = json{
-                    
+                    print("jo")
                 }
                 self.prepareForSeque()
             }

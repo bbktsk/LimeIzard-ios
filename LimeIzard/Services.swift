@@ -17,7 +17,10 @@ struct User {
     var fbName: String
     var firstName: String?
     var lastName: String?
-    var fbImage: String?
+    var imgUrl: String?
+    var mood: String = ""
+    var message: String = ""
+    var signal: Float = 0
 }
 
 var BeaconManager: KTKBeaconManager!
@@ -25,6 +28,7 @@ let API = WebAPI._instance
 var FBToken: FBSDKAccessToken?
 var CurrentUser: User?
 var usersNearby = [User]()
+let UsersNearbyChanged = "UsersNearbyChanged"
 
 func startRangingBeacons() {
 
@@ -76,7 +80,7 @@ class WebAPI {
             case .UserUpdate(let userID):
                 return "users/\(userID)"
             case .UserCreate:
-                return "users/"
+                return "users"
             case .UserVisitBeacon(let userID):
                 return "users/\(userID)/visit"
             }
@@ -105,19 +109,22 @@ class WebAPI {
         
     }
     
-    func getUserInfo(userID: String, onComplete: (JSON?, NSError?) -> Void) {
+    func getUserInfo(userID: String, onComplete: ([String: AnyObject]?, NSError?) -> Void) {
         Alamofire.request(Router.UserInfo(userID: userID))
             .responseJSON { response in
                 print("---------------------------")
                 print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
                 print(response.result)   // result of response serialization
                 
-                let json = response.result.value as? JSON
-                print(json)
-                onComplete(json, nil)
                 
+                if let json = response.result.value as? [String: AnyObject] {
+                    print(NSString(data: response.data!, encoding:NSUTF8StringEncoding)!)
+                    onComplete(json, nil)
+                }
+                else {
+                    print("no user data found")
+                    onComplete(nil,nil)
+                }
         }
     }
     
@@ -127,8 +134,8 @@ class WebAPI {
             .responseJSON { response in
                 print("---------------------------")
                 print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
+                
+                print(NSString(data: response.request!.HTTPBody!, encoding:NSUTF8StringEncoding)!)
                 print(response.result)   // result of response serialization
                 
                 let json = response.result.value as? JSON
@@ -137,8 +144,36 @@ class WebAPI {
         }
     }
     
-    func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject], onComplete: JSON? -> Void) {
-        
+    func sendUserVisitBeacon(userID: String, beaconData: [String: AnyObject], onComplete: [String: AnyObject]? -> Void) {
+        Alamofire.request(Router.UserVisitBeacon(userID: userID, beaconData: beaconData))
+            .responseJSON { response in
+                print("---------------------------")
+                print(response.request)  // original URL request
+                print(NSString(data: response.request!.HTTPBody!, encoding:NSUTF8StringEncoding)!)
+                
+                usersNearby.removeAll()
+                if let data = response.result.value as? [String: AnyObject] {
+                    
+                    if let people = data["people"] as? [AnyObject] {
+                        for p in people {
+                            let name = p["first_name"] as? String ?? "---"
+                            let signal = p["signal"] as? Float ?? 0
+                            let mood = p["mood"] as? String ?? ""
+                            let message = p["message"] as? String ?? ""
+                            let imgUrl = p["photo_url"] as? String ?? ""
+                            let usr = User(fbID: "", fbName: "", firstName: name, lastName: "", imgUrl: imgUrl, mood: mood, message: message, signal: signal)
+                            usersNearby.append(usr)
+                            print("adding user \(name)")
+                        }
+                    }
+                }
+                else {
+                    
+                }
+                
+                let nc = NSNotificationCenter.defaultCenter()
+                nc.postNotificationName(UsersNearbyChanged, object: nil)
+        }
     }
     
     

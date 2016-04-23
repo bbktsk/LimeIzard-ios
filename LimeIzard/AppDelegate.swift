@@ -54,16 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        let forFb =  FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
-        
-        if forFb {
-            let nc = NSNotificationCenter.defaultCenter()
-            nc.postNotificationName("UserLoggedInFB", object: nil)
-            return true
-        }
-        else {
-            return false
-        }
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+
     }
 }
 
@@ -100,8 +92,11 @@ extension AppDelegate: KTKBeaconManagerDelegate {
     func beaconManager(manager: KTKBeaconManager, didRangeBeacons beacons: [CLBeacon], inRegion region: KTKBeaconRegion) {
         print("Did ranged \"\(beacons.count)\" beacons inside region: \(region)")
         
-        if let closestBeacon = beacons.sort({ $0.0.accuracy < $0.1.accuracy }).first where closestBeacon.accuracy > 0 {
-            print("Closest Beacon is M: \(closestBeacon.major), m: \(closestBeacon.minor) ~ \(closestBeacon.accuracy) meters away.")
+        if let closestBeacon = beacons.sort({ $0.0.accuracy <= $0.1.accuracy }).first where closestBeacon.accuracy > 0 {
+            let identifier = "\(closestBeacon.proximityUUID.UUIDString)\(closestBeacon.major)\(closestBeacon.minor)"
+//            API.sendUserVisitBeacon(identifier, beaconData: <#T##[String : AnyObject]#>) {onComplete in
+            
+//            }
         }
     }
 }
