@@ -141,7 +141,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     func startTheGame() {
-        performSegueWithIdentifier("startTheGame", sender: self)
+        // TODO
+        //performSegueWithIdentifier("startTheGame", sender: self)
     }
 
 }
