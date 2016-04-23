@@ -232,6 +232,7 @@ class TabBarViewController: UITabBarController {
     }
     
     func checkForNearbyUsers() {
+        API.getPokes()
         startRangingBeacons()
         BeaconManager.requestStateForRegion(MyRegion)
         BeaconManager.requestLocationAlwaysAuthorization()

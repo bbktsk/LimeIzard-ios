@@ -9,6 +9,8 @@
 import UIKit
 
 class NearbyViewCell: UITableViewCell {
+    
+    var fbID : String = ""
 
     @IBOutlet weak var userImage: UIImageView!
     
@@ -39,7 +41,15 @@ class NearbyViewCell: UITableViewCell {
     func loadFromUser(user: User) {
         self.userNameLabel.text = user.firstName
         self.userImage.image = getFBImage(user.fbID)
+        self.fbID = user.fbID
     }
     
+    @IBAction func pokeTapped(sender: UIButton) {
+        pokeUser()
+    }
 
+    
+    func pokeUser() {
+        API.pokeUser(fbID)
+    }
 }

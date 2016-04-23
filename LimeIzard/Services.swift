@@ -11,6 +11,7 @@ import KontaktSDK
 import Alamofire
 import SwiftyJSON
 import FBSDKLoginKit
+import SVProgressHUD
 
 struct User {
     var fbID: String
@@ -113,6 +114,29 @@ func getFBImage(fbID: String) -> UIImage?{
     return nil
 }
 
+
+func sendPokeNotif(poker: String) {
+    dispatch_async(dispatch_get_main_queue(), {
+        let notif = UILocalNotification()
+        
+        notif.category = "poke"
+        notif.alertTitle = ""
+        notif.fireDate = nil
+        notif.alertBody = "You where poked by \(poker)"
+        notif.soundName = UILocalNotificationDefaultSoundName
+        
+        let app = UIApplication.sharedApplication()
+        
+        if app.applicationState == UIApplicationState.Active {
+            app.delegate?.application?(app, handleActionWithIdentifier: nil, forLocalNotification: notif, completionHandler: {})
+            
+        }
+        else {
+            UIApplication.sharedApplication().scheduleLocalNotification(notif)
+        }
+    })
+}
+
 class WebAPI {
     
     static let _instance = WebAPI()
@@ -130,6 +154,8 @@ class WebAPI {
         case UserUpdate(userID: String)
         case UserVisitBeacon(userID: String, beaconData: [String: AnyObject])
         case UserCreate(user: [String: AnyObject])
+        case PokeUser(myID: String, hisID: String)
+        case GetPokes(myID: String)
         
         var method : Alamofire.Method {
             switch self {
@@ -141,6 +167,10 @@ class WebAPI {
                 return .POST
             case .UserVisitBeacon:
                 return .POST
+            case .PokeUser:
+                return .POST
+            case .GetPokes:
+                return .GET
             }
         }
         
@@ -154,6 +184,10 @@ class WebAPI {
                 return "users"
             case .UserVisitBeacon(let userID, _):
                 return "users/\(userID)/visit"
+            case .PokeUser(let myID, _):
+                return "users/\(myID)/poke"
+            case .GetPokes(let myID):
+                return "users/\(myID)/poke"
             }
         }
         
@@ -172,6 +206,8 @@ class WebAPI {
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: user).0
             case .UserVisitBeacon(_, let beaconData):
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: beaconData).0
+            case .PokeUser(_, let hisID):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: ["target": hisID]).0
             default:
                 return mutableURLRequest
             }
@@ -245,5 +281,40 @@ class WebAPI {
         }
     }
     
+    func pokeUser(targetID: String) {
+        if let usr = CurrentUser {
+            SVProgressHUD.show()
+            Alamofire.request(Router.PokeUser(myID: usr.fbID, hisID: targetID))
+                .responseJSON { response in
+                    
+                    if (response.result.isSuccess) {
+                        SVProgressHUD.showSuccessWithStatus("Poke successful")
+                    }
+                    else {
+                        SVProgressHUD.showErrorWithStatus("There was problem sending the Poke")
+                    }
+                    
+            }
+        }
+        else {
+            SVProgressHUD.showErrorWithStatus("There was problem sending the Poke")
+        }
+    }
     
+    
+    func getPokes() {
+        if let usr = CurrentUser {
+            Alamofire.request(Router.GetPokes(myID: usr.fbID))
+                .responseJSON { response in
+                    
+                    if let json = response.result.value as? [String: AnyObject] {
+                        print(NSString(data: response.data!, encoding:NSUTF8StringEncoding)!)
+                        sendPokeNotif(json["first_name"] as? String ?? "--" )
+                    }
+            }
+        }
+        else {
+            SVProgressHUD.showErrorWithStatus("There was problem sending the Poke")
+        }
+    }
 }
