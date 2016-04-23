@@ -89,7 +89,7 @@ func maskImageToCircle(image: UIImage) -> UIImage {
     layer = imageView.layer
     
     layer.masksToBounds = true
-    layer.cornerRadius = CGFloat(image.size.height/2)
+    layer.cornerRadius = CGFloat(img!.size.height/2)
     
     UIGraphicsBeginImageContext(imageView.bounds.size)
     layer.renderInContext(UIGraphicsGetCurrentContext()!)
@@ -107,7 +107,7 @@ func getFBImage(fbID: String) -> UIImage?{
     if let url = getFacebookProfileUrl(fbID) {
         if let data = NSData(contentsOfURL: url) {
             if let img = UIImage(data: data) {
-                return cropImageToSquare(img)
+                return maskImageToCircle(img)
             }
         }
     }

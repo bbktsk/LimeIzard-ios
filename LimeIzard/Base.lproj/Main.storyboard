@@ -23,10 +23,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileCell" id="adX-jn-kQm" customClass="ProfileCell" customModule="LimeIzard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adX-jn-kQm" id="qmF-SB-4lh">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6q-t8-v7N">
@@ -191,33 +191,27 @@ while you commute</string>
                                         <rect key="frame" x="0.0" y="92" width="600" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EiY-tk-iqt" id="s2c-6h-dzy">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="76.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-dU-Fwg">
-                                                    <rect key="frame" x="15" y="0.0" width="69" height="71"/>
+                                                    <rect key="frame" x="15" y="5" width="66" height="66"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="69" id="3M7-uX-M4s"/>
+                                                        <constraint firstAttribute="width" constant="66" id="3M7-uX-M4s"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="He's Happy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMn-q2-LVB">
-                                                    <rect key="frame" x="92" y="28" width="436" height="21"/>
+                                                    <rect key="frame" x="89" y="30" width="428" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go talk to him or poke him" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDc-cr-y8x">
-                                                    <rect key="frame" x="92" y="49" width="436" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGt-Ky-BlV">
-                                                    <rect key="frame" x="536" y="22" width="56" height="30"/>
+                                                    <rect key="frame" x="525" y="22" width="60" height="33"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="56" id="t0g-ES-DKC"/>
+                                                        <constraint firstAttribute="width" constant="60" id="t0g-ES-DKC"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                                     <state key="normal" title="POKE"/>
                                                     <connections>
@@ -225,30 +219,41 @@ while you commute</string>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-Fm-Vb2">
-                                                    <rect key="frame" x="92" y="8" width="436" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <rect key="frame" x="89" y="5" width="428" height="26"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go talk to him or poke him" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDc-cr-y8x">
+                                                    <rect key="frame" x="89" y="53" width="428" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eGt-Ky-BlV" firstAttribute="leading" secondItem="WMn-q2-LVB" secondAttribute="trailing" constant="8" id="8Eb-Oh-ZpB"/>
-                                                <constraint firstItem="Soe-dU-Fwg" firstAttribute="top" secondItem="s2c-6h-dzy" secondAttribute="top" id="AOX-Qh-ZAA"/>
+                                                <constraint firstItem="Soe-dU-Fwg" firstAttribute="top" secondItem="s2c-6h-dzy" secondAttribute="top" constant="5" id="AOX-Qh-ZAA"/>
                                                 <constraint firstItem="eGt-Ky-BlV" firstAttribute="top" secondItem="s2c-6h-dzy" secondAttribute="topMargin" constant="14" id="BMy-iz-J0C"/>
                                                 <constraint firstAttribute="bottom" secondItem="Soe-dU-Fwg" secondAttribute="bottom" constant="5" id="HjV-ph-E9O"/>
                                                 <constraint firstItem="WMn-q2-LVB" firstAttribute="trailing" secondItem="DDc-cr-y8x" secondAttribute="trailing" id="Igi-hs-qG1"/>
-                                                <constraint firstItem="dHW-Fm-Vb2" firstAttribute="top" secondItem="Soe-dU-Fwg" secondAttribute="top" constant="8" id="KOW-HH-26f"/>
+                                                <constraint firstItem="dHW-Fm-Vb2" firstAttribute="top" secondItem="Soe-dU-Fwg" secondAttribute="top" id="KOW-HH-26f"/>
                                                 <constraint firstItem="Soe-dU-Fwg" firstAttribute="leading" secondItem="s2c-6h-dzy" secondAttribute="leading" constant="15" id="O8w-B1-gOH"/>
-                                                <constraint firstItem="eGt-Ky-BlV" firstAttribute="trailing" secondItem="s2c-6h-dzy" secondAttribute="trailingMargin" id="SJA-7S-ZQR"/>
+                                                <constraint firstItem="eGt-Ky-BlV" firstAttribute="trailing" secondItem="s2c-6h-dzy" secondAttribute="trailing" constant="-15" id="SJA-7S-ZQR"/>
                                                 <constraint firstItem="WMn-q2-LVB" firstAttribute="leading" secondItem="Soe-dU-Fwg" secondAttribute="trailing" constant="8" id="Yas-lz-Tjj"/>
-                                                <constraint firstItem="WMn-q2-LVB" firstAttribute="top" secondItem="s2c-6h-dzy" secondAttribute="topMargin" constant="20" id="exI-pC-FhR"/>
+                                                <constraint firstItem="WMn-q2-LVB" firstAttribute="top" secondItem="s2c-6h-dzy" secondAttribute="topMargin" constant="22" id="exI-pC-FhR"/>
                                                 <constraint firstItem="dHW-Fm-Vb2" firstAttribute="leading" secondItem="Soe-dU-Fwg" secondAttribute="trailing" constant="8" id="j2F-u1-XVA"/>
                                                 <constraint firstItem="eGt-Ky-BlV" firstAttribute="leading" secondItem="dHW-Fm-Vb2" secondAttribute="trailing" constant="8" id="jUN-Y3-wog"/>
                                                 <constraint firstItem="WMn-q2-LVB" firstAttribute="centerY" secondItem="eGt-Ky-BlV" secondAttribute="centerY" constant="1.5" id="jUw-np-RAy"/>
-                                                <constraint firstItem="DDc-cr-y8x" firstAttribute="top" secondItem="dHW-Fm-Vb2" secondAttribute="bottom" constant="20" id="lLm-yx-JPz"/>
-                                                <constraint firstItem="eGt-Ky-BlV" firstAttribute="centerY" secondItem="Soe-dU-Fwg" secondAttribute="centerY" constant="1.5" id="m6x-KM-QdZ"/>
+                                                <constraint firstItem="DDc-cr-y8x" firstAttribute="top" secondItem="dHW-Fm-Vb2" secondAttribute="bottom" constant="22" id="lLm-yx-JPz"/>
+                                                <constraint firstItem="eGt-Ky-BlV" firstAttribute="centerY" secondItem="Soe-dU-Fwg" secondAttribute="centerY" constant="0.5" id="m6x-KM-QdZ"/>
                                                 <constraint firstItem="WMn-q2-LVB" firstAttribute="leading" secondItem="DDc-cr-y8x" secondAttribute="leading" id="s4k-c1-NEF"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="jUw-np-RAy"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="heyButton" destination="eGt-Ky-BlV" id="3NF-L7-PUz"/>
